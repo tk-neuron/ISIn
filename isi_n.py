@@ -60,7 +60,6 @@ class ISIn:
         burst_on = False
 
         for i in range(n_spikes - n + 1):
-            t_i = spiketrain[i]
             if spiketrain[i + n - 1] - spiketrain[i] <= threshold_msec:
                 if not burst_on:
                     burst_start.append(spiketrain[i])
@@ -72,7 +71,7 @@ class ISIn:
                     burst_on = False
 
         if len(burst_end) == len(burst_start) - 1:
-            burst_end.append(t_i)
+            burst_end.append(spiketrain[-1])  # if the last spike is in-burst, set it as the last burst end
 
         burst = np.array([burst_start, burst_end]) / 1000.0
         return burst  # burst[0]: burst_start, burst[1]: burst_end
