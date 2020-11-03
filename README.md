@@ -33,4 +33,4 @@ print(bursts[0])  # array of burst start time
 print(bursts[1])  # array of burst end time
 ```
 
-Optimal `n_list` varies a lot depending on your data (e.g. culturing density, a number of channels), so I recommend trying various N values.
+Optimal `n_list` varies a lot depending on your data (e.g. culturing density, the number of channels), so I recommend trying various N values.
