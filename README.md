@@ -16,15 +16,15 @@ Bakkum DJ, Radivojevic M, Frey U, Franke F, Hierlemann A, Takahashi H. [Paramete
 
 ## Example
 
-You can import `isi_n.py` as a module.  The algorithm ***ISI_N*** is implemented as a class.
+You can import `burst_detector.py` as a module.  The algorithm ***ISI_N*** is implemented as a class.
 
 ```python
-import isi_n
+import burst_detector
 
 spike_train = # prepare a single spike train that combines all spikes from multiple channels #
 # make sure spike train is in sec scale, not msec scale
 
-nb_detector = isi_n.ISIn()
+nb_detector = burst_detector.ISIn()
 nb_detector.plot(spiketime_sec=spike_train, n_list=range(2, 10))
 bursts = nb_detector.burst_detection(spiketime_sec=spike_train, n=10, threshold_msec=50)
 # note that you specify isi_n threshold in msec scale, not sec scale
