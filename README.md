@@ -1,6 +1,6 @@
-# Parameters for burst detection (Python)
+# Parameters for burst detection (Python3)
 
-This code is **unofficial** Python implementation of the following paper's algorithm:
+This code is **unofficial** Python3 implementation of the following paper's algorithm:
 
 Bakkum DJ, Radivojevic M, Frey U, Franke F, Hierlemann A, Takahashi H. [Parameters for burst detection](https://doi.org/10.3389/fncom.2013.00193). Front Comput Neurosci. 2014 Jan 13;7:193. doi: 10.3389/fncom.2013.00193. PMID: 24567714; PMCID: PMC3915237.
 
