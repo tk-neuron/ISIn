@@ -43,39 +43,30 @@ class ISIn:
             ax.vlines(x=threshold_msec, ymin=10**(-7), ymax=10**0, colors='red', label='threshold')
 
         ax.legend(loc='lower left')
+        plt.show()
 
     @staticmethod
     def burst_detection(spiketime_sec, n, threshold_msec):
         """
-        detect burst based on specified n and isi_n [ms]
-        :param spiketime_sec: spike train in sec scale
+        detect bursts from spike train
+        :param spiketime_sec: np.array of spike time in sec scale
         :param n: n for ISIn
-        :param threshold_msec: ISIn threshold determined in msec scale
-        :return: burst array burst[0]: array of burst start time, burst[1]: array of burst end time
+        :param threshold_msec: ISIn threshold in msec scale
+        :return: burst array, burst[i] represents ith burst's start time and end time
         """
-        spiketrain = list(spiketime_sec * 1000.0)  # convert the scale to ms
-        n_spikes = len(spiketrain)
-        burst_start, burst_end = [], []
-
-        burst_on = False
+        spiketime_msec = list(spiketime_sec * 1000.0)  # convert the scale to ms
+        n_spikes = len(spiketime_msec)
+        burst_idx = np.zeros(n_spikes, dtype=np.int)
 
         for i in range(n_spikes - n + 1):
-            if spiketrain[i + n - 1] - spiketrain[i] <= threshold_msec:
-                if not burst_on:
-                    burst_start.append(spiketrain[i])
-                    burst_on = True
+            if spiketime_msec[i + n - 1] - spiketime_msec[i] <= threshold_msec:
+                burst_idx[i:i + n] = True
 
-            else:
-                if burst_on:
-                    burst_end.append(spiketrain[i + n - 2])
-                    burst_on = False
+        diff = burst_idx[1:] - burst_idx[:-1]
+        burst_start = spiketime_sec[1:][diff == 1]
+        burst_end = spiketime_sec[:-1][diff == -1]
+        burst = np.array([burst_start, burst_end]).transpose()
 
-        if len(burst_end) == len(burst_start) - 1:
-            burst_end.append(spiketrain[-1])  # if the last spike is in-burst, set it as the last burst end
-
-        burst = np.array([burst_start, burst_end]) / 1000.0
-        burst = burst.transpose()
-
-        # burst[i]: ith burst
+        # burst[i]: ith burst's [start time, end time]
         # burst[:, 0]: array of all bursts' start time, burst[:, 1]: array of all bursts' end time
         return burst
