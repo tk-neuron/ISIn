@@ -74,4 +74,8 @@ class ISIn:
             burst_end.append(spiketrain[-1])  # if the last spike is in-burst, set it as the last burst end
 
         burst = np.array([burst_start, burst_end]) / 1000.0
-        return burst  # burst[0]: burst_start, burst[1]: burst_end
+        burst = burst.transpose()
+
+        # burst[i]: ith burst
+        # burst[:, 0]: array of all bursts' start time, burst[:, 1]: array of all bursts' end time
+        return burst

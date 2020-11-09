@@ -29,8 +29,10 @@ nb_detector.plot(spiketime_sec=spike_train, n_list=range(2, 10))
 bursts = nb_detector.burst_detection(spiketime_sec=spike_train, n=10, threshold_msec=50)
 # note that you specify isi_n threshold in msec scale, not sec scale
 
-print(bursts[0])  # array of burst start time
-print(bursts[1])  # array of burst end time
+print(bursts[i])  # ith burst
+print(bursts[:, 0])  # array of all bursts' start time
+print(bursts[:, 1])  # array of all bursts' end time
 ```
 
 Optimal `n_list` varies a lot depending on your data (e.g. culturing density, the number of channels), so I recommend trying various N values.
+
