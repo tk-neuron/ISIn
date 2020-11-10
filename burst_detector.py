@@ -65,6 +65,11 @@ class ISIn:
         diff = burst_idx[1:] - burst_idx[:-1]
         burst_start = spiketime_sec[1:][diff == 1]
         burst_end = spiketime_sec[:-1][diff == -1]
+
+        if len(burst_end) == len(burst_start) - 1:
+            # if scanning range ends within burst, set the last spike's time as the last burst's end time
+            burst_end = np.append(burst_end, spiketime_sec[-1])
+
         burst = np.array([burst_start, burst_end]).transpose()
 
         # burst[i]: ith burst's [start time, end time]
