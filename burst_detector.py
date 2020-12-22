@@ -19,7 +19,7 @@ class ISIn:
         :param threshold_msec: optional, set ISIn threshold to visualize
         """
         lowess = sm.nonparametric.lowess
-        spiketime_sec.sort()
+        spiketime_sec = np.sort(spiketime_sec)
         spiketime = spiketime_sec * 1000.0  # convert the scale to ms
 
         fig, ax = plt.subplots()
@@ -55,7 +55,7 @@ class ISIn:
         :param threshold: ISIn threshold
         :return: burst array, burst[i] represents ith burst's start time and end time
         """
-        spiketime_sec.sort()
+        spiketime_sec = np.sort(spiketime_sec)
         spiketime_msec = list(spiketime_sec * 1000.0)  # convert the scale to ms
         n_spikes = len(spiketime_msec)
         burst_idx = np.zeros(n_spikes, dtype=np.int)
