@@ -21,8 +21,8 @@ You can import `burst_detector.py` as a module.  The algorithm ***ISI_N*** is im
 ```python
 import burst_detector
 
-spike_train = # prepare a single spike train that combines all spikes from multiple channels #
-# please make sure spike train is sorted in ascending order and is in sec scale, not msec scale
+spike_train = # prepare a single spike train (np.array) that combines all spikes from multiple channels #
+# please make sure spike train is in sec scale, not msec scale
 
 nb_detector = burst_detector.ISIn()
 nb_detector.plot(spiketime_sec=spike_train, n_list=range(2, 10))
