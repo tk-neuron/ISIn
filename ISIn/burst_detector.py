@@ -1,8 +1,8 @@
-import numpy as np
-import matplotlib.pyplot as plt
-import statsmodels.api as sm
-
 from typing import List, Literal, Union
+
+import matplotlib.pyplot as plt
+import numpy as np
+import statsmodels.api as sm
 
 
 class BurstDetector:
