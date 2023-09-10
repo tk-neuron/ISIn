@@ -6,9 +6,9 @@ Bakkum DJ, Radivojevic M, Frey U, Franke F, Hierlemann A, Takahashi H. [Paramete
 
 ## Install
 After cloning this repository, do:
-```
-cd ISIn
-pip install .  # make sure you're in the virtual environment for your project
+```shell
+(venv) cd ISIn
+(venv) pip install .  # make sure you're in the virtual environment for your project
 ```
 
 ## Example
