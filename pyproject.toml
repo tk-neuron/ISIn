@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "ISIn"
+version = "0.1.0"
+description = "Burst Detector with ISIn algorithm"
+authors = []
+readme = "README.md"
+packages = [{include = "ISIn"}]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+matplotlib = "^3.7.2"
+numpy = "^1.25.2"
+statsmodels = "^0.14.0"
+
+[tool.poetry.group.dev.dependencies]
+jupyter = "^1.0.0"
+black = "^23.9.0"
+isort = "^5.12.0"
+flake8 = "^6.1.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
